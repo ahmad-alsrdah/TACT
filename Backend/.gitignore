@@ -3,3 +3,4 @@ Properties/*
 bin/*
 appsettings.json
 appsettings.Development.json
+/.idea/
