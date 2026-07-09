@@ -8,7 +8,7 @@ namespace TACT.Models;
 public class Log
 {
     [Key]
-    public int Id { get; set; }
+    public long Id { get; set; }
     
     [Required]
     public LogType Type { get; set; }
@@ -17,14 +17,14 @@ public class Log
     public LogStatus Status { get; set; }
     
     [Required]
-    public string Description { get; set; }
+    public string? Description { get; set; }
     
     [Required]
     public decimal AiSeverityScore { get; set; }
     
     public DateTime TimeStamp { get; set; }
     
-    public int TaskId { get; set; }
+    public long TaskId { get; set; }
     [ForeignKey("TaskId")] public virtual WorkTask WorkTask { get; set; } = null;
     
 }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="TACT@localhost" uuid="b3ff50d2-3e49-4108-b6e1-c4b94d3e1a99">
+    <data-source source="LOCAL" name="TACT@localhost" uuid="d967ec22-c5f2-4a42-a00e-fc6a7fb1c525">
       <driver-ref>sqlserver.jb</driver-ref>
       <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
       <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
-      <jdbc-url>Server=localhost\AHMADSRDAH;Database=TACT</jdbc-url>
+      <jdbc-url>Server=localhost\AHMADSRDAH;Database=TACT;Trusted_Connection=True;TrustServerCertificate=True;</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

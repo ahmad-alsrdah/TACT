@@ -8,10 +8,10 @@ namespace TACT.Models;
 public class WorkTask
 {
     [Key]
-    public int Id { get; set; }
+    public long Id { get; set; }
     
     [Required]
-    public string Title { get; set; }
+    public string? Title { get; set; }
     
     public DateTime StartTime { get; set; } =  DateTime.UtcNow;
     
@@ -24,7 +24,7 @@ public class WorkTask
 
     public virtual ICollection<Log> Logs { get; set; } = new List<Log>();
     
-    public int UserId { get; set; }
+    public long UserId { get; set; }
     [ForeignKey("UserId")] public User User { get; set; } = null;
     
 }

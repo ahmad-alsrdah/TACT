@@ -7,7 +7,7 @@ namespace TACT.Models;
 public class RefreshToken
 {
     [Key]
-    public int Id { get; set; }
+    public long Id { get; set; }
     
     [Required]
     public string Token { get; set; }
@@ -16,7 +16,7 @@ public class RefreshToken
     
     public bool IsRevoked { get; set; }
     
-    public int  UserId { get; set; }
+    public long  UserId { get; set; }
     [ForeignKey("UserId")] public virtual User User { get; set; } = null;
     
 }
