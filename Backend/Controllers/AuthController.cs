@@ -298,18 +298,18 @@ public class AuthController : ControllerBase
         if (user == null) 
             return BadRequest(new { message = "Invalid request." });
 
-        var isValid = await _userManager.VerifyUserTokenAsync(user, "Email", "ResetPasswordPurpose", dto.VerificationCode);
-    
-        if (!isValid)
-        {
+        
+        if (!await _userManager.VerifyUserTokenAsync(user, "Email", "ResetPasswordPurpose", dto.VerificationCode))
             return BadRequest(new { message = "Invalid or expired verification code." });
-        }
-
-        var removeResult = await _userManager.RemovePasswordAsync(user);
-        if (!removeResult.Succeeded) return BadRequest(removeResult.Errors);
-
-        var addResult = await _userManager.AddPasswordAsync(user, dto.NewPassword);
-        if (!addResult.Succeeded) return BadRequest(addResult.Errors);
+    
+        if (await _userManager.CheckPasswordAsync(user, dto.NewPassword))
+            return BadRequest(new { message = "Your new password cannot be the same as your old password." });
+    
+        var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+        var result = await _userManager.ResetPasswordAsync(user, resetToken, dto.NewPassword);
+    
+        if (!result.Succeeded) 
+            return BadRequest(result.Errors);
 
         return Ok(new { message = "Password has been reset successfully! You can login now." });
     }
