@@ -13,6 +13,6 @@ Task Automation & Control Tool
 - `main` is reserved for stable releases.
 
 ### Branch Naming
-- Use clear names like `feature/login-ui` or `bugfix/api-error-handling`.
+- Use clear names like `frontend/signup-ui` or `feature/login-ui` or `bugfix/api-error-handling`.
 - Keep branch purpose focused and short.
 
