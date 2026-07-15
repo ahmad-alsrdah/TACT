@@ -36,4 +36,6 @@ public class User : IdentityUser<long>
     public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
         
     public virtual GoogleCredential? GoogleCredentials { get; set; } 
+    
+    public virtual ICollection<UserInstalledApp> InstalledApps { get; set; } = new List<UserInstalledApp>();
 }
