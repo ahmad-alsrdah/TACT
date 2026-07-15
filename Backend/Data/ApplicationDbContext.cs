@@ -12,6 +12,7 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<long>, 
     }
 
     public DbSet<User> Users => Set<User>();
+    public DbSet<UserInstalledApp> UserInstalledApps { get; set; }
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     public DbSet<GoogleCredential> GoogleCredentials => Set<GoogleCredential>();
     public DbSet<WorkTask> WorkTasks => Set<WorkTask>();
