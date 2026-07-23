@@ -6,6 +6,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using TACT.Data;
 using TACT.DTOs;
+using TACT.Enums;
 using TACT.Models;
 using TACT.Services;
 
@@ -221,5 +222,24 @@ public class ProfileController : ControllerBase
         await _userManager.UpdateAsync(user);
 
         return Ok(new { message = "Profile image deleted successfully!" });
+    }
+    
+    [HttpPut("update-mode")]
+    public async Task<IActionResult> UpdateGlobalMode([FromBody] AppMode mode)
+    {
+        if (mode < (AppMode)1 || mode > (AppMode)3)
+            return BadRequest(new { message = "Invalid mode. Must be 1 (Light), 2 (Medium), or 3 (Strict)." });
+
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId == null) return Unauthorized();
+
+        var user = await _context.Users.FindAsync(userId);
+        if (user == null) return NotFound(new { message = "User not found" });
+
+        user.AppMode = mode;
+        await _context.SaveChangesAsync();
+
+
+        return Ok(new { message = "Global mode updated successfully!", currentMode = user.AppMode });
     }
 }
