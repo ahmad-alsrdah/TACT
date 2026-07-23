@@ -65,6 +65,7 @@ try
 
     builder.Services.AddScoped<IJwtService, JwtService>();
     builder.Services.AddTransient<IEmailService, EmailService>();
+    builder.Services.AddHttpClient<AiService>();
     builder.Services.AddAuthorization();
     builder.Services.AddControllers();
 
