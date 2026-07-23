@@ -4,8 +4,8 @@ using TACT.Enums;
 
 namespace TACT.Models;
 
-[Table("Apps")]
-public class App
+[Table("BlockedApps")]
+public class BlockedApp
 {
     [Key]
     public long Id { get; set; }
@@ -14,9 +14,7 @@ public class App
     public string? PackageName { get; set; }
     
     [Required]
-    public PolicyType PolicyType { get; set; }
-    
-    public bool IsRevoked { get; set; }
+    public string? AppName { get; set; } = string.Empty;
     
     public long TaskId { get; set; }
     [ForeignKey("TaskId")] public virtual WorkTask? WorkTask { get; set; } = null;
