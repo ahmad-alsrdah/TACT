@@ -20,7 +20,7 @@ public class WorkTask
     [Required]
     public WorkTaskSource Source { get; set; }
     
-    public virtual ICollection<App>  Apps { get; set; } = new List<App>();
+    public virtual ICollection<BlockedApp>  BlockedApps { get; set; } = new List<BlockedApp>();
 
     public virtual ICollection<Log> Logs { get; set; } = new List<Log>();
     
