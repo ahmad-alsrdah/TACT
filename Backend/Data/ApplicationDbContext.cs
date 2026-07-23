@@ -16,7 +16,7 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<long>, 
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     public DbSet<GoogleCredential> GoogleCredentials => Set<GoogleCredential>();
     public DbSet<WorkTask> WorkTasks => Set<WorkTask>();
-    public DbSet<App> Apps => Set<App>();
+    public DbSet<BlockedApp> Apps => Set<BlockedApp>();
     public DbSet<Log> Logs => Set<Log>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

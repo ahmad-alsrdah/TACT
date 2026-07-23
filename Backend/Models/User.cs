@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using TACT.Enums;
 
 namespace TACT.Models;
 
@@ -20,6 +21,8 @@ public class User : IdentityUser<long>
     
     [Required]
     public int TotalScore { get; set; } = 0;
+
+    public AppMode AppMode { get; set; } = AppMode.Light;
     
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
@@ -37,5 +40,5 @@ public class User : IdentityUser<long>
         
     public virtual GoogleCredential? GoogleCredentials { get; set; } 
     
-    public virtual ICollection<UserInstalledApp> InstalledApps { get; set; } = new List<UserInstalledApp>();
+    public virtual ICollection<UserInstalledApp>? InstalledApps { get; set; } = new List<UserInstalledApp>();
 }

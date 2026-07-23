@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TACT.Models;
 
+[Table("UserInstalledApps")]
 public class UserInstalledApp
 {
     [Key]
